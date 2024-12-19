@@ -1,0 +1,121 @@
+.create-task-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.7803921569);
+  opacity: 0;
+  transition: all ease 0.4s;
+  position: absolute;
+  inset: 0;
+  transition: 0.4s;
+  visibility: hidden;
+}
+.create-task-bg.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.create-task-bg .create-task {
+  width: 70%;
+  height: 70%;
+  max-width: 100%;
+  background-color: #fff;
+  left: 50%;
+  position: relative;
+  top: 50%;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+}
+.create-task-bg .create-task .close-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.create-task-bg .create-task .line {
+  width: 35px;
+  height: 3px;
+  background-color: black;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+.create-task-bg .create-task .line1 {
+  top: 8px;
+}
+.create-task-bg .create-task .line3 {
+  top: 28px;
+}
+.create-task-bg .create-task .close-button .line1 {
+  transform: translateY(10px) rotate(45deg);
+}
+.create-task-bg .create-task .close-button .line3 {
+  transform: translateY(-10px) rotate(-45deg);
+}
+.create-task-bg h1 {
+  text-align: center;
+  padding: 30px 0px;
+  font-size: 30px;
+}
+.create-task-bg .create-task-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 100px 0px;
+}
+.create-task-bg .create-task-flex .task-info {
+  border: 1px solid black;
+  padding: 50px;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex {
+  display: flex;
+  gap: 10px;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div:nth-child(1) {
+  border: 2px solid #ff0000;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div:nth-child(2) {
+  border: 2px solid #ffff00;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div:nth-child(3) {
+  border: 2px solid #00ff00;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div:nth-child(4) {
+  border: 2px solid #4169e1;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div {
+  transition: 0.4s;
+  width: 100px;
+  padding: 5px;
+  border-left-width: 5px !important;
+  cursor: pointer;
+}
+.create-task-bg .create-task-flex .task-info .task-info-flex div.active {
+  background-color: #e2e2e2;
+  width: 110px;
+}
+.create-task-bg .create-task-flex .enter-input-task input[type=text] {
+  width: 250px;
+  height: 35px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline: none;
+  padding: 5px;
+  border: 0;
+  border: 1px solid gray;
+}
+.create-task-bg .create-task-flex .enter-input-task input[type=submit] {
+  width: 250px;
+  height: 35px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline: none;
+  padding: 5px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid gray;
+}/*# sourceMappingURL=CreateNewTodo.css.map */

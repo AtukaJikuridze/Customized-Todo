@@ -1,32 +1,24 @@
-import React, { Component } from "react";
+import { checkDifficultyColor } from "../checkDifficultyColor";
 
-class Unfinished extends Component {
-  shouldComponentUpdate(nextProps) {
-    return nextProps.tasks !== this.props.tasks;
-  }
-
-  render() {
-    console.log("unfinished");
-
-    return (
-      <div className="list">
-        <h1>UnFinished</h1>
-        <div className="tasks">
-          {this.props.tasks.map((e) => (
-            <div className="unfinished-flex" key={e.id}>
-              <h2>{e.title}</h2>
-              <button
-                className="finish-task"
-                onClick={() => this.props.finishTask(e.id)}
-              >
-                Finish Task
-              </button>
-            </div>
-          ))}
-        </div>
+const Unfinished = ({ tasks, finishTask, moveTask,setTaskClickInfo }) => {
+  return (
+    <div className="list">
+      <h1>Backlog {tasks.length ? `: ${tasks.length}` : ""}</h1>
+      <div className="backlog-border lists-border"></div>
+      <div className="tasks">
+        {tasks.map((e) => (
+          <div
+            className="every-task"
+            key={Math.random()}
+            style={{ borderColor: checkDifficultyColor(e.difficulty) }}
+            onClick={() => moveTask()}
+          >
+            <h2>{e.title}</h2>
+          </div>
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Unfinished;

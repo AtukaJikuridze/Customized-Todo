@@ -1,0 +1,130 @@
+.create-task-bg {
+  width: 100%;
+  height: 100%;
+  background-color: #242424c7;
+  opacity: 0;
+  transition: all ease 0.4s;
+  position: absolute;
+  inset: 0;
+  transition: 0.4s;
+  visibility: hidden;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .create-task {
+    width: 70%;
+    height: 70%;
+    max-width: 100%;
+    background-color: #fff;
+    left: 50%;
+    position: relative;
+    top: 50%;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+
+    .close-button {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .line {
+      width: 35px;
+      height: 3px;
+      background-color: black;
+      transition: all 0.3s ease;
+      position: absolute;
+    }
+
+    .line1 {
+      top: 8px;
+    }
+    .line3 {
+      top: 28px;
+    }
+    .close-button .line1 {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .close-button .line3 {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
+  h1 {
+    text-align: center;
+    padding: 30px 0px;
+    font-size: 30px;
+  }
+  .create-task-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 100px 0px;
+
+    .task-info {
+      border: 1px solid black;
+      padding: 50px;
+      .task-info-flex {
+        display: flex;
+        gap: 10px;
+
+        div:nth-child(1) {
+          border: 2px solid #ff0000;
+        }
+        div:nth-child(2) {
+          border: 2px solid #ffff00;
+        }
+        div:nth-child(3) {
+          border: 2px solid #00ff00;
+        }
+        div:nth-child(4) {
+          border: 2px solid #4169e1;
+        }
+        div {
+          transition: 0.4s;
+          width: 100px;
+          padding: 5px;
+          border-left-width: 5px !important;
+          cursor: pointer;
+        }
+        div.active {
+          background-color: #e2e2e2;
+          width: 110px;
+        }
+      }
+    }
+    .enter-input-task {
+      input[type="text"] {
+        width: 250px;
+        height: 35px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        outline: none;
+        padding: 5px;
+        border: 0;
+        border: 1px solid gray;
+      }
+      input[type="submit"] {
+        width: 250px;
+        height: 35px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        outline: none;
+        padding: 5px;
+        border: 0;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid gray;
+      }
+    }
+  }
+}
