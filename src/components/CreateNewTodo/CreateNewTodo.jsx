@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import "./CreateNewTodo.css";
 import { useState } from "react";
-
 const CreateNewTodo = ({
   isCreatingTask,
   setIsCreatingTask,
@@ -38,7 +37,11 @@ const CreateNewTodo = ({
     if (inputValue.length && activeFilter >= 0) {
       setUnfinishedList([
         ...unfinishedList,
-        { title: inputValue, difficulty: taskDifficulty },
+        {
+          title: inputValue,
+          difficulty: taskDifficulty,
+          uniqueIdToMoveTask: Math.random(),
+        },
       ]);
       setTaskDifficulty("");
       setActiveFilter(-1);

@@ -27,6 +27,7 @@ h1 {
     cursor: pointer;
     margin: 0px auto 50px auto;
     border-radius: 10px;
+    max-width: 90%;
   }
 
   .todo-flex {
@@ -97,7 +98,7 @@ h1 {
   background-color: #242424c7;
   opacity: 0;
   transition: all ease 0.4s;
-  position: absolute;
+  position: fixed;
   inset: 0;
   transition: 0.4s;
   visibility: hidden;
@@ -160,7 +161,7 @@ h1 {
     cursor: pointer;
     transition: 0.2s;
 
-    &:nth-child(1) {
+    &.progress {
       border: 1px solid yellow;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.415);
@@ -171,7 +172,18 @@ h1 {
         color: black;
       }
     }
-    &:nth-child(2) {
+
+    &.unfinished {
+      border: 1px solid brown;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.415);
+      &:hover {
+        background-color: brown;
+        color: #fff;
+      }
+    }
+
+    &.finished {
       border: 1px solid limegreen;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.415);
@@ -182,7 +194,7 @@ h1 {
         color: #fff;
       }
     }
-    &:nth-child(3) {
+    &.delete {
       border: 1px solid red;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.415);
@@ -191,6 +203,44 @@ h1 {
         border-color: #fff;
         background-color: red;
         color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .move-to {
+    background-color: rgba(0, 0, 0, 0.894);
+    .move-task-to {
+      flex-direction: column;
+      div.move {
+        width: 400px;
+        text-align: center;
+        max-width: 90%;
+      }
+    }
+  }
+
+  .todo-main {
+    padding: 50px 0px;
+    height: unset;
+    .todo-flex {
+      flex-direction: column;
+      .list {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .todo-main {
+    .todo-flex {
+      div.list {
+        width: 90%;
+        h1 {
+          font-size: 30px;
+        }
       }
     }
   }

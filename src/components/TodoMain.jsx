@@ -4,6 +4,7 @@ import FinishedList from "./FinishedList";
 import ProgressList from "./ProgressList";
 import CreateNewTodo from "./CreateNewTodo/CreateNewTodo";
 import MoveTo from "./MoveTo";
+import { moveTaskLogic } from "../moveTaskLogic";
 
 const TodoMain = () => {
   const checkLocalStorage = (localStorageItem) => {
@@ -24,6 +25,9 @@ const TodoMain = () => {
   );
   const [taskClickInfo, setTaskClickInfo] = useState({});
 
+  const [movingTaskInfo, setMovingTaskInfo] = useState({});
+  const [movingTaskFrom, setMovingTaskFrom] = useState("");
+
   useEffect(() => {
     localStorage.setItem("unfinishedList", JSON.stringify(unfinishedList));
     localStorage.setItem("finishedList", JSON.stringify(finishedList));
@@ -31,24 +35,6 @@ const TodoMain = () => {
   }, [unfinishedList, finishedList]);
 
   const [isMovingTask, setIsMovingTask] = useState(false);
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (inputValue.length) {
-      const newTask = {
-        id: Math.random(),
-        title: inputValue,
-      };
-
-      setUnfinishedList([...unfinishedList, newTask]);
-      setInputValue("");
-    }
-  };
 
   const finishTask = (id) => {
     const currentTask = unfinishedList.find((e) => e.id === id);
@@ -66,13 +52,31 @@ const TodoMain = () => {
     setFinishedList(newFinishedArr);
   };
 
-  const removeTask = (id) => {
-    const newFinishedArr = finishedList.filter((e) => e.id !== id);
-    setFinishedList(newFinishedArr);
+  const moveTask = (e, from) => {
+    setMovingTaskFrom(from);
+    setIsMovingTask(true);
+    setMovingTaskInfo({
+      movingFrom: from,
+      id: e.uniqueIdToMoveTask,
+    });
+    console.log(movingTaskInfo);
   };
-  const moveTask = (e) => {
-   alert(e)
+  const moveTaskFunction = (e) => {
+    console.log(e);
+    moveTaskLogic({
+      moveTo: e.moveTo,
+      setUnfinishedList,
+      setProgressList,
+      movingTaskInfo,
+      setFinishedList,
+      unfinishedList,
+      progressList,
+      finishedList,
+      action: e.moveTo === "delete" ? "delete" : undefined, // Handle delete
+    });
+    setIsMovingTask(false);
   };
+
   return (
     <div className="todo-main">
       <CreateNewTodo
@@ -81,7 +85,12 @@ const TodoMain = () => {
         unfinishedList={unfinishedList}
         setUnfinishedList={setUnfinishedList}
       />
-      <MoveTo isMovingTask={isMovingTask} setIsMovingTask={setIsMovingTask} />
+      <MoveTo
+        isMovingTask={isMovingTask}
+        setIsMovingTask={setIsMovingTask}
+        moveTaskFunction={(e) => moveTaskFunction(e)}
+        movingFrom={movingTaskFrom}
+      />
       <div className="create-task-text" onClick={() => setIsCreatingTask(true)}>
         <h2>Create New Task !</h2>
       </div>
@@ -90,13 +99,16 @@ const TodoMain = () => {
         <Unfinished
           tasks={unfinishedList}
           finishTask={finishTask}
-          moveTask={() => moveTask(true)}
+          moveTask={(e) => moveTask(e, "unfinished")}
         />
-        <ProgressList removeTask={removeTask} progressList={progressList} />
+        <ProgressList
+          progressList={progressList}
+          moveTask={(e) => moveTask(e, "progress")}
+        />
         <FinishedList
           finishedList={finishedList}
           moveToUnfinished={moveToUnfinished}
-          removeTask={removeTask}
+          moveTask={(e) => moveTask(e, "finished")}
         />
       </div>
     </div>

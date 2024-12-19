@@ -1,21 +1,25 @@
 import { checkDifficultyColor } from "../checkDifficultyColor";
 
-const Unfinished = ({ tasks, finishTask, moveTask,setTaskClickInfo }) => {
+const Unfinished = ({ tasks, moveTask, setTaskClickInfo }) => {
   return (
     <div className="list">
       <h1>Backlog {tasks.length ? `: ${tasks.length}` : ""}</h1>
       <div className="backlog-border lists-border"></div>
       <div className="tasks">
-        {tasks.map((e) => (
-          <div
-            className="every-task"
-            key={Math.random()}
-            style={{ borderColor: checkDifficultyColor(e.difficulty) }}
-            onClick={() => moveTask()}
-          >
-            <h2>{e.title}</h2>
-          </div>
-        ))}
+        {tasks.length ? (
+          tasks.map((e) => (
+            <div
+              className="every-task"
+              key={Math.random()}
+              style={{ borderColor: checkDifficultyColor(e.difficulty) }}
+              onClick={() => moveTask(e, "unfinished")}
+            >
+              <h2>{e.title}</h2>
+            </div>
+          ))
+        ) : (
+          <h1>There is no aviable task</h1>
+        )}
       </div>
     </div>
   );

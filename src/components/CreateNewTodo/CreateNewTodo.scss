@@ -4,7 +4,7 @@
   background-color: #242424c7;
   opacity: 0;
   transition: all ease 0.4s;
-  position: absolute;
+  position: fixed;
   inset: 0;
   transition: 0.4s;
   visibility: hidden;
@@ -23,6 +23,7 @@
     top: 50%;
     border-radius: 20px;
     transform: translate(-50%, -50%);
+    overflow-y: auto;
 
     .close-button {
       width: 40px;
@@ -124,6 +125,74 @@
         cursor: pointer;
         background-color: transparent;
         border: 1px solid gray;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1640px) {
+  .create-task-bg {
+    .create-task {
+      .create-task-flex {
+        padding: 20px 0px;
+        gap: 20px;
+        flex-direction: column;
+        .task-info {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .create-task-bg {
+    .create-task {
+      height: 70%;
+      .create-task-flex {
+        .task-info-flex {
+          justify-content: center;
+        }
+        .task-info {
+          text-align: center;
+          padding: 20px;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .create-task-bg {
+    .create-task {
+      h1 {
+        font-size: 25px;
+        padding: 50px 0px 0px 0px;
+      }
+      width: 95%;
+      height: 90%;
+      .create-task-flex {
+        height: 60%;
+        justify-content: space-between;
+        .task-info-flex {
+          justify-content: center;
+          flex-wrap: wrap;
+
+          div {
+            width: 40%;
+          }
+        }
+
+        .enter-input-task {
+          h1 {
+            margin-bottom: 40px;
+          }
+          input {
+            width: 100%;
+            text-align: center;
+            margin: auto;
+          }
+        }
       }
     }
   }

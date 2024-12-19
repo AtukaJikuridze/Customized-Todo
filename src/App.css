@@ -28,6 +28,7 @@ h1 {
   cursor: pointer;
   margin: 0px auto 50px auto;
   border-radius: 10px;
+  max-width: 90%;
 }
 .todo-main .todo-flex {
   justify-content: center;
@@ -95,7 +96,7 @@ h1 {
   background-color: rgba(36, 36, 36, 0.7803921569);
   opacity: 0;
   transition: all ease 0.4s;
-  position: absolute;
+  position: fixed;
   inset: 0;
   transition: 0.4s;
   visibility: hidden;
@@ -154,36 +155,77 @@ h1 {
   cursor: pointer;
   transition: 0.2s;
 }
-.move-to .move:nth-child(1) {
+.move-to .move.progress {
   border: 1px solid yellow;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.415);
 }
-.move-to .move:nth-child(1):hover {
+.move-to .move.progress:hover {
   background-color: black;
   border-color: transparent;
   background-color: yellow;
   color: black;
 }
-.move-to .move:nth-child(2) {
+.move-to .move.unfinished {
+  border: 1px solid brown;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.415);
+}
+.move-to .move.unfinished:hover {
+  background-color: brown;
+  color: #fff;
+}
+.move-to .move.finished {
   border: 1px solid limegreen;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.415);
 }
-.move-to .move:nth-child(2):hover {
+.move-to .move.finished:hover {
   background-color: black;
   border-color: #fff;
   background-color: limegreen;
   color: #fff;
 }
-.move-to .move:nth-child(3) {
+.move-to .move.delete {
   border: 1px solid red;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.415);
 }
-.move-to .move:nth-child(3):hover {
+.move-to .move.delete:hover {
   background-color: black;
   border-color: #fff;
   background-color: red;
   color: #fff;
+}
+
+@media screen and (max-width: 1250px) {
+  .move-to {
+    background-color: rgba(0, 0, 0, 0.894);
+  }
+  .move-to .move-task-to {
+    flex-direction: column;
+  }
+  .move-to .move-task-to div.move {
+    width: 400px;
+    text-align: center;
+    max-width: 90%;
+  }
+  .todo-main {
+    padding: 50px 0px;
+    height: unset;
+  }
+  .todo-main .todo-flex {
+    flex-direction: column;
+  }
+  .todo-main .todo-flex .list {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 590px) {
+  .todo-main .todo-flex div.list {
+    width: 90%;
+  }
+  .todo-main .todo-flex div.list h1 {
+    font-size: 30px;
+  }
 }/*# sourceMappingURL=App.css.map */

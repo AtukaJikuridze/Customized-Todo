@@ -1,15 +1,26 @@
-const FinishedList = ({ finishedList, moveToUnfinished, removeTask }) => {
+import { checkDifficultyColor } from "../checkDifficultyColor";
+
+const FinishedList = ({ finishedList, moveTask }) => {
   return (
     <div className="list">
       <h1>Finished</h1>
       <div className="finished-border lists-border"></div>
 
       <div className="tasks">
-        {finishedList.map((e) => (
-          <div className="every-task" key={Math.random()}>
-            <h2>{e.title}</h2>
-          </div>
-        ))}
+        {!finishedList.length ? (
+          <h1>There is no task yet</h1>
+        ) : (
+          finishedList.map((e) => (
+            <div
+              className="every-task"
+              key={Math.random()}
+              onClick={() => moveTask(e, "progress")}
+              style={{ borderColor: checkDifficultyColor(e.difficulty) }}
+            >
+              <h2>{e.title}</h2>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
