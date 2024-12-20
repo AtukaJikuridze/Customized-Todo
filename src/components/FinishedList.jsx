@@ -1,9 +1,12 @@
 import { checkDifficultyColor } from "../checkDifficultyColor";
 
-const FinishedList = ({ finishedList, moveTask }) => {
+const FinishedList = ({ finishedList, moveTask, clearAll }) => {
   return (
     <div className="list">
       <h1>Finished</h1>
+      <h3 className="clear" onClick={() => clearAll("progress")}>
+        Clear all
+      </h3>
       <div className="finished-border lists-border"></div>
 
       <div className="tasks">

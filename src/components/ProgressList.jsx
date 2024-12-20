@@ -1,12 +1,15 @@
 import React from "react";
 import { checkDifficultyColor } from "../checkDifficultyColor";
 
-const ProgressList = ({ progressList, moveTask }) => {
+const ProgressList = ({ progressList, moveTask, clearAll }) => {
   return (
     <div className="list">
       <h1>
         In progress {progressList.length ? `: ${progressList.length}` : ""}
       </h1>
+      <h3 className="clear" onClick={() => clearAll("progress")}>
+        Clear all
+      </h3>
       <div className="progress-border lists-border"></div>
       <div className="tasks">
         {!progressList.length ? (

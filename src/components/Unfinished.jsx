@@ -1,9 +1,12 @@
 import { checkDifficultyColor } from "../checkDifficultyColor";
 
-const Unfinished = ({ tasks, moveTask, setTaskClickInfo }) => {
+const Unfinished = ({ tasks, moveTask, setTaskClickInfo, clearAll }) => {
   return (
     <div className="list">
       <h1>Backlog {tasks.length ? `: ${tasks.length}` : ""}</h1>
+      <h3 className="clear" onClick={() => clearAll("progress")}>
+        Clear all
+      </h3>
       <div className="backlog-border lists-border"></div>
       <div className="tasks">
         {tasks.length ? (

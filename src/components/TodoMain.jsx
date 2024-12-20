@@ -76,6 +76,25 @@ const TodoMain = () => {
     });
     setIsMovingTask(false);
   };
+  const clearAll = (List) => {
+    switch (List) {
+      case "progress":
+        localStorage.setItem("progressList", JSON.stringify([]));
+        setProgressList(JSON.parse(localStorage.getItem("progressList")));
+        break;
+      case "unfinished":
+        localStorage.setItem("unfinishedList", JSON.stringify([]));
+        setUnfinishedList(JSON.parse(localStorage.getItem("unfinishedList")));
+        break;
+      case "finished":
+        localStorage.setItem("finishedList", JSON.stringify([]));
+        setFinishedList(JSON.parse(localStorage.getItem("finishedList")));
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="todo-main">
@@ -100,15 +119,18 @@ const TodoMain = () => {
           tasks={unfinishedList}
           finishTask={finishTask}
           moveTask={(e) => moveTask(e, "unfinished")}
+          clearAll={() => clearAll("unfinished")}
         />
         <ProgressList
           progressList={progressList}
           moveTask={(e) => moveTask(e, "progress")}
+          clearAll={() => clearAll("progress")}
         />
         <FinishedList
           finishedList={finishedList}
           moveToUnfinished={moveToUnfinished}
           moveTask={(e) => moveTask(e, "finished")}
+          clearAll={() => clearAll("finished")}
         />
       </div>
     </div>
